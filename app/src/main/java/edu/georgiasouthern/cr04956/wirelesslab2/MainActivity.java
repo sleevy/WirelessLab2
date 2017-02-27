@@ -80,17 +80,6 @@ public class MainActivity extends AppCompatActivity {
         }
         });
 
-//            changeText("Haiti", txt);
-
-
-//        } catch(MalformedURLException murle) {
-//          murle.printStackTrace();
-//        } catch(IOException ioe) {
-//            ioe.printStackTrace();
-//        } catch(JSONException jsone) {
-//            jsone.printStackTrace();
-//        }
-
     }
 
 
@@ -103,12 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     txt = retrieveText(title);
 
-                } catch(MalformedURLException murle) {
-                    murle.printStackTrace();
-                } catch(IOException ioe) {
+                } catch(IOException | JSONException ioe) {
                     ioe.printStackTrace();
-                } catch(JSONException jsone) {
-                    jsone.printStackTrace();
                 }
                 return txt;
             }
@@ -125,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
     private String retrieveText(String title) throws IOException, JSONException{
         URL query = new URL(URLPrefix + NUM_SENTENCES + URLSuffix + URLEncoder.encode(title, "utf-8"));
         HttpURLConnection conn = (HttpURLConnection) query.openConnection();
-//        String feedback = conn.getContent();
         InputStream in = conn.getInputStream();
         BufferedReader read = new BufferedReader(new InputStreamReader(in));
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         String line;
         while((line = read.readLine()) != null) {
             Log.i("change text", line);
@@ -140,10 +124,6 @@ public class MainActivity extends AppCompatActivity {
         child = child.getJSONObject("pages");
         child = child.getJSONObject(child.names().getString(0));
 
-
-        String extract = child.getString("extract");
-//        TextView out = (TextView) findViewById(R.id.textView);
-        return extract;
-//        out.setText(Html.fromHtml(extract));
+        return child.getString("extract");
     }
 }
