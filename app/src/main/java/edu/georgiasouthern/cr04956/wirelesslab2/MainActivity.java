@@ -25,20 +25,57 @@ import java.net.URLEncoder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String URLPrefix = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&exsentences=5&titles=";
-    private static final String TAG = "edu.georgiasouthern.cr04956.wirelesslab2.MAIN";
-    private String countryName = "United States";
+    private final int NUM_SENTENCES = 4;
+    private String URLPrefix = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&exsentences=";
+    private String URLSuffix = "&titles=";
+
+//    private String countryName = "Cuba";
+    private String[] countries = {
+            "Cuba",
+            "Haiti",
+            "United States",
+            "Jamaica",
+            "Canada",
+
+            "Brazil",
+            "Argentina",
+            "Chile",
+            "Peru",
+            "Venezuela",
+
+            "France",
+            "Germany",
+            "Poland",
+            "Greece",
+            "Portugal",
+
+            "Russia",
+            "China",
+            "Japan",
+            "India",
+            "South Korea",
+
+            "South Africa",
+            "Ethiopia",
+            "Mali",
+            "Morocco",
+            "Nigeria"
+    };
+    private int countryIndex = 0;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        makeTask(countries[countryIndex]).execute();
 //        final TextView txt = (TextView)findViewById(R.id.textView);
         Button btn = (Button) findViewById(R.id.btnRetrieve);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                makeTask(countryName).execute();
+                countryIndex++;
+                countryIndex = countryIndex % countries.length;
+                makeTask(countries[countryIndex]).execute();
 
         }
         });
@@ -86,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String retrieveText(String title) throws IOException, JSONException{
-        URL query = new URL(URLPrefix + URLEncoder.encode(title, "utf-8"));
+        URL query = new URL(URLPrefix + NUM_SENTENCES + URLSuffix + URLEncoder.encode(title, "utf-8"));
         HttpURLConnection conn = (HttpURLConnection) query.openConnection();
 //        String feedback = conn.getContent();
         InputStream in = conn.getInputStream();
