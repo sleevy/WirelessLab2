@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class MainActivity extends FragmentActivity {
 
     private class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
         public CountryStorage cs;
-        public static final int VIEW_HEIGHT = 200;
+        public static final int VIEW_HEIGHT = 100;
 
         public CountryAdapter() {
                 cs = CountryStorage.getCountryStorage();
@@ -53,7 +54,9 @@ public class MainActivity extends FragmentActivity {
         public CountryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LinearLayout layout = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_country, parent, false);
             //size,margin,padding,layout params
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,VIEW_HEIGHT);
+            DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+            int pxHeight = (int)((VIEW_HEIGHT * displayMetrics.density) + 0.5);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,pxHeight);
             layout.setLayoutParams(params);
 
 

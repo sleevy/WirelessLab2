@@ -6,13 +6,33 @@
 
     <ImageView
         android:id="@+id/itemCountryFlag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
         app:srcCompat="@drawable/us" />
 
-    <TextView
-        android:id="@+id/itemCountryName"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/text_country"
+            android:textAlignment="textStart"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/itemCountryName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/item_name_default"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
 </LinearLayout>
