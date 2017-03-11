@@ -2,4 +2,5 @@
     <string name="app_name">WirelessLab2</string>
     <string name="text_country">Country:</string>
     <string name="item_name_default">To Be Changed</string>
+    <string name="reset_list">Reset List</string>
 </resources>

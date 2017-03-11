@@ -3,6 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_list" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/countryRecycler"
         android:layout_width="match_parent"
