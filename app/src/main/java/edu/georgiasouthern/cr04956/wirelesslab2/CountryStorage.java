@@ -87,8 +87,8 @@ public class CountryStorage {
         initializeCountryList();
     }
 
-    private CountryStorage theInstance;
-    public CountryStorage getCountryStorage() {
+    private static CountryStorage theInstance;
+    public static CountryStorage getCountryStorage() {
         if(theInstance == null) {
             theInstance = new CountryStorage();
         }
@@ -96,7 +96,7 @@ public class CountryStorage {
     }
 
     public void initializeCountryList() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             countries.add(nAmerica[i]);
             countries.add(sAmerica[i]);
             countries.add(europe[i]);
@@ -133,6 +133,11 @@ public class CountryStorage {
       }
     }
 
+
+    public Country getCountry(int index) {
+     return countries.get(index);
+    }
+
     public void removeCountriesBasedOnCountry(Country c) {
         for(int i = 0; i < 5; i++) {
             if(nAmerica[i].equals(c)) {
@@ -158,14 +163,19 @@ public class CountryStorage {
         for(int i = 0; i < 5; i++) {
             if(nAmerica[i].equals(c)) {
                 addNorthAmerica();
+                return;
             } else if(sAmerica[i].equals(c)) {
                 addSouthAmerica();
+                return;
             } else if(europe[i].equals(c)) {
                 addEurope();
+                return;
             } else if(asia[i].equals(c)) {
                 addAsia();
+                return;
             } else if(africa[i].equals(c)) {
                 addAfrica();
+                return;
             }
         }
     }
@@ -198,4 +208,11 @@ public class CountryStorage {
         }
     }
 
+    public ArrayList<Country> getCountries() {
+        return countries;
+    }
+
+    public int size() {
+        return countries.size();
+    }
 }
