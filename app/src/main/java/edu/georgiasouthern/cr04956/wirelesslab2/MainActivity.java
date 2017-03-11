@@ -41,7 +41,8 @@ public class MainActivity extends FragmentActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cs.initializeCountryList();
+                Log.i("Reset onClick", "Resetting country list");
+                cs.resetCountryList();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -57,7 +58,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-    private class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
+    protected class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
         public static final int VIEW_HEIGHT = 100;
 
         public CountryAdapter() {
@@ -102,6 +103,8 @@ public class MainActivity extends FragmentActivity {
             String name = c.getName();
             Log.i("onClick", name);
             Intent toCountryActivity = new Intent();
+
+            startActivity(toCountryActivity);
         }
     }
 

@@ -41,6 +41,8 @@ public class CountryStorage {
 //            "Nigeria"
 //    };
 
+    private MainActivity.CountryAdapter observer;
+
     private Country[] nAmerica = {
             new Country("Cuba", R.drawable.cu),
             new Country("Haiti", R.drawable.ht),
@@ -95,7 +97,7 @@ public class CountryStorage {
         return theInstance;
     }
 
-    public void initializeCountryList() {
+    private void initializeCountryList() {
         for (int i = 0; i < 2; i++) {
             countries.add(nAmerica[i]);
             countries.add(sAmerica[i]);
@@ -103,6 +105,11 @@ public class CountryStorage {
             countries.add(asia[i]);
             countries.add(africa[i]);
         }
+    }
+
+    public void resetCountryList() {
+        initializeCountryList();
+        notifyDataChanged();
     }
 
     public void removeNorthAmerica() {
@@ -131,6 +138,7 @@ public class CountryStorage {
               countries.remove(c);
           }
       }
+      notifyDataChanged();
     }
 
 
@@ -206,6 +214,7 @@ public class CountryStorage {
                 countries.add(c);
             }
         }
+        notifyDataChanged();
     }
 
     public ArrayList<Country> getCountries() {
@@ -216,4 +225,12 @@ public class CountryStorage {
         return countries.size();
     }
 
+    public void setObserver(MainActivity.CountryAdapter adapter) {
+        observer = adapter;
+    }
+    public void notifyDataChanged() {
+        if(observer != null) {
+            observer.notifyDataSetChanged();
+        }
+    }
 }
