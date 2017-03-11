@@ -24,7 +24,7 @@ import static android.R.attr.country;
 public class MainActivity extends FragmentActivity {
 
 
-
+    public static final String EXTRA_COUNTRY_INDEX = "edu.georgiasouthern.cr04956.MainActivity.index";
 
     private RecyclerView countryRecycler;
     private CountryStorage cs;
@@ -35,7 +35,9 @@ public class MainActivity extends FragmentActivity {
 
         cs = CountryStorage.getCountryStorage();
 
-        final CountryAdapter adapter = new CountryAdapter();
+        CountryAdapter adapter = new CountryAdapter();
+
+        cs.setObserver(adapter);
 
         Button reset = (Button) findViewById(R.id.btnReset);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +45,6 @@ public class MainActivity extends FragmentActivity {
             public void onClick(View v) {
                 Log.i("Reset onClick", "Resetting country list");
                 cs.resetCountryList();
-                adapter.notifyDataSetChanged();
             }
         });
 
@@ -102,8 +103,8 @@ public class MainActivity extends FragmentActivity {
             Country c = cs.getCountry(pos);
             String name = c.getName();
             Log.i("onClick", name);
-            Intent toCountryActivity = new Intent();
-
+            Intent toCountryActivity = new Intent(MainActivity.this, CountryActivity.class);
+            toCountryActivity.putExtra(EXTRA_COUNTRY_INDEX, pos);
             startActivity(toCountryActivity);
         }
     }

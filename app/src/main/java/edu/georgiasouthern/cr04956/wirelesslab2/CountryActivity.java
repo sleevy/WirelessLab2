@@ -1,5 +1,6 @@
 package edu.georgiasouthern.cr04956.wirelesslab2;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -64,11 +65,18 @@ public class CountryActivity extends AppCompatActivity {
 //            "Nigeria"
 //    };
 //    private int countryIndex = 0;
+    private Country currentCountry;
 
     protected void onCreate( Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
+        Intent i = getIntent();
+        int index = i.getIntExtra(MainActivity.EXTRA_COUNTRY_INDEX, 0);
+        CountryStorage cs = CountryStorage.getCountryStorage();
+        currentCountry = cs.getCountry(index);
+        makeTask(currentCountry.getName()).execute();
 
+        //other shit
 
     }
 

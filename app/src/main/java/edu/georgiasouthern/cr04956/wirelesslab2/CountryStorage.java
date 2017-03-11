@@ -84,6 +84,7 @@ public class CountryStorage {
     };
 
     private ArrayList<Country> countries;
+
     private CountryStorage() {
         countries = new ArrayList<Country>(10);
         initializeCountryList();
@@ -228,6 +229,7 @@ public class CountryStorage {
     public void setObserver(MainActivity.CountryAdapter adapter) {
         observer = adapter;
     }
+
     public void notifyDataChanged() {
         if(observer != null) {
             observer.notifyDataSetChanged();
