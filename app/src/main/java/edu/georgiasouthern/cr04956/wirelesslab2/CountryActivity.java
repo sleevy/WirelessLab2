@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -76,7 +77,12 @@ public class CountryActivity extends AppCompatActivity {
         currentCountry = cs.getCountry(index);
         makeTask(currentCountry.getName()).execute();
 
-        //other shit
+        TextView countryName = (TextView) findViewById(R.id.countryName);
+        countryName.setText(currentCountry.getName());
+
+        ImageView theFlag = (ImageView) findViewById(R.id.countryFlag);
+        theFlag.setImageResource(currentCountry.getFlagId());
+
 
     }
 

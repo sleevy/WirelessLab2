@@ -3,4 +3,9 @@
     <string name="text_country">Country:</string>
     <string name="item_name_default">To Be Changed</string>
     <string name="reset_list">Reset List</string>
+    <string name="text_rating">How would you rate this page?</string>
+    <string name="yes_button_text">Yes</string>
+    <string name="no_button_text">No</string>
+    <string name="filler_text">Lorem ipsum</string>
+    <string name="information_text">Some Information: (Scrollable)</string>
 </resources>
