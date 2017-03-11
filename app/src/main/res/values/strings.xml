@@ -8,4 +8,6 @@
     <string name="no_button_text">No</string>
     <string name="filler_text">Lorem ipsum</string>
     <string name="information_text">Some Information: (Scrollable)</string>
+    <string name="notes_text">Feel free to take some notes!</string>
+    <string name="question_text">Would you like to visit more countries on the same continent?</string>
 </resources>
