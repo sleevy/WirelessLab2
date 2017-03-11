@@ -31,7 +31,7 @@ public class CountryActivity extends AppCompatActivity {
 
 
 
-    private int MAX_HEIGHT = 200;
+    private int MAX_HEIGHT = 400;
     //    private String countryName = "Cuba";
 //    private String[] countries = {
 //            "Cuba",
