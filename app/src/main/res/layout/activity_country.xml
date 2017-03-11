@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    tools:context="edu.georgiasouthern.cr04956.wirelesslab2.CountryFragment"
+    tools:context="edu.georgiasouthern.cr04956.wirelesslab2.CountryActivity"
     android:weightSum="1"
     android:orientation="vertical"
     android:layout_width="fill_parent"

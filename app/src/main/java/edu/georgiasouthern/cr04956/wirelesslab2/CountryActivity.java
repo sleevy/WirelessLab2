@@ -1,8 +1,8 @@
 package edu.georgiasouthern.cr04956.wirelesslab2;
 
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +26,9 @@ import java.net.URLEncoder;
  * Created by Cameron Rhodes on 3/11/2017.
  */
 
-public class CountryFragment extends Fragment {
+public class CountryActivity extends AppCompatActivity {
 
 
-
-    public CountryFragment() {
-        super();
-    }
 
     private int MAX_HEIGHT = 200;
     //    private String countryName = "Cuba";
@@ -69,30 +65,14 @@ public class CountryFragment extends Fragment {
 //    };
 //    private int countryIndex = 0;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    protected void onCreate( Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_country);
 
-        View v = inflater.inflate(R.layout.fragment_country,container,false);
 
-
-//        makeTask(v, countries[countryIndex]).execute();
-
-    //        final TextView txt = (TextView)findViewById(R.id.textView);
-//    Button btn = (Button) v.findViewById(R.id.btnRetrieve);
-//        btn.setOnClickListener(new View.OnClickListener()
-//
-//    {
-//        public void onClick (View v){
-//        countryIndex++;
-//        countryIndex = countryIndex % countries.length;
-//        makeTask(v, countries[countryIndex]).execute();
-//
-//    }
-//    });
-
-        return v;
     }
 
-    private AsyncTask<String, Void, String> makeTask(final View v, final String title) {
+    private AsyncTask<String, Void, String> makeTask(final String title) {
 
         return new AsyncTask<String, Void, String>() {
             private String txt;
@@ -109,9 +89,9 @@ public class CountryFragment extends Fragment {
 
             @Override
             protected void onPostExecute(String result) {
-                TextView out = (TextView) v.findViewById(R.id.countryInfo);
+                TextView out = (TextView) findViewById(R.id.countryInfo);
                 out.setText(Html.fromHtml(result));
-                ScrollView sv = (ScrollView) v.findViewById(R.id.countryInfoScroll);
+                ScrollView sv = (ScrollView) findViewById(R.id.countryInfoScroll);
                 if(sv.getHeight() > MAX_HEIGHT) {
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,MAX_HEIGHT);
                     sv.setLayoutParams(lp);
