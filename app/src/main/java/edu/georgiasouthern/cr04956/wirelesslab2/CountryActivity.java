@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -82,6 +83,12 @@ public class CountryActivity extends AppCompatActivity {
 
         ImageView theFlag = (ImageView) findViewById(R.id.countryFlag);
         theFlag.setImageResource(currentCountry.getFlagId());
+
+        //TODO: add to ocuntry list
+        Button yesButton = (Button) findViewById(R.id.btnYes);
+
+        //TODO: remove countries from list
+        Button noButton = (Button) findViewById(R.id.btnNo);
 
 
     }
