@@ -8,7 +8,7 @@
         android:id="@+id/itemCountryFlag"
         android:layout_width="130dp"
         android:layout_height="90dp"
-        app:srcCompat="@drawable/us" />
+        android:src="@drawable/us" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -37,7 +37,6 @@
                 android:layout_height="45dp"
                 android:gravity="center_vertical"
                 android:text="@string/item_name_default"
-                android:textAlignment="textStart"
                 android:textSize="18sp" />
         </LinearLayout>
 

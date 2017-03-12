@@ -1,10 +1,11 @@
 package edu.georgiasouthern.cr04956.wirelesslab2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -36,7 +37,7 @@ import static android.provider.Contacts.SettingsColumns.KEY;
  * Created by Cameron Rhodes on 3/11/2017.
  */
 
-public class CountryActivity extends AppCompatActivity {
+public class CountryActivity extends Activity {
 
 
 

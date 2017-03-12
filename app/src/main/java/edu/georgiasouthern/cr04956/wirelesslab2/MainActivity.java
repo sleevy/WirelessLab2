@@ -1,8 +1,9 @@
 package edu.georgiasouthern.cr04956.wirelesslab2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -16,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 
     public static final String EXTRA_COUNTRY_INDEX = "edu.georgiasouthern.cr04956.MainActivity.index";
@@ -55,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
         //todo change to card layout if few in list
 
     }
+
+//    private void updateRecyclerViewLayout() {
+//        if(cs.size() <= 4) {
+//            countryRecycler.setLayoutManager(new CardLayoutManager(this));
+//        } else {
+//            countryRecycler.setLayoutManager(new LinearLayoutManager(this));
+//        }
+//    }
 
     protected class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
         public static final int VIEW_HEIGHT = 100;
@@ -96,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     private class CountryListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            int pos = countryRecycler.getChildLayoutPosition(v);
+            int pos = countryRecycler.getChildPosition(v);
             Country c = cs.getCountry(pos);
             String name = c.getName();
             Log.i("onClick", name);

@@ -19,7 +19,7 @@
             android:id="@+id/countryFlag"
             android:layout_width="76dp"
             android:layout_height="59dp"
-            app:srcCompat="@drawable/us" />
+            android:src="@drawable/us" />
 
         <TextView
             android:id="@+id/countryName"
