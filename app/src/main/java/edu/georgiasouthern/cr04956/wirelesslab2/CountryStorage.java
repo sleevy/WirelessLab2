@@ -113,23 +113,23 @@ public class CountryStorage {
         notifyDataChanged();
     }
 
-    public void removeNorthAmerica() {
+    private void removeNorthAmerica() {
         removeCountries(nAmerica);
     }
 
-    public void removeAsia() {
+    private void removeAsia() {
         removeCountries(asia);
     }
 
-    public void removeEurope() {
+    private void removeEurope() {
         removeCountries(europe);
     }
 
-    public void removeAfrica() {
+    private void removeAfrica() {
         removeCountries(africa);
     }
 
-    public void removeSouthAmerica() {
+    private void removeSouthAmerica() {
         removeCountries(sAmerica);
     }
 
@@ -187,7 +187,16 @@ public class CountryStorage {
 
     public void addBasedOnCountry(Country c) {
         switch (c.getContinent()) {
-            //TODO: add code mimicking above method
+            case AFRICA: addAfrica();
+                break;
+            case NORTH_AMERICA: addNorthAmerica();
+                break;
+            case SOUTH_AMERICA: addSouthAmerica();
+                break;
+            case ASIA: addAsia();
+                break;
+            case EUROPE: addEurope();
+                break;
         }
 //        for(int i = 0; i < 5; i++) {
 //            if(nAmerica[i].equals(c)) {
@@ -209,23 +218,23 @@ public class CountryStorage {
 //        }
     }
 
-    public void addNorthAmerica() {
+    private void addNorthAmerica() {
         addCountries(nAmerica);
     }
 
-    public void addSouthAmerica() {
+    private void addSouthAmerica() {
         addCountries(sAmerica);
     }
 
-    public void addEurope() {
+    private void addEurope() {
         addCountries(europe);
     }
 
-    public void addAsia() {
+    private void addAsia() {
         addCountries(asia);
     }
 
-    public void addAfrica() {
+    private void addAfrica() {
         addCountries(africa);
     }
 

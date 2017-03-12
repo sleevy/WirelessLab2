@@ -68,13 +68,15 @@ public class CountryActivity extends AppCompatActivity {
 //    };
 //    private int countryIndex = 0;
     private Country currentCountry;
+    private final String NOTE_KEY = "Notes";
+    private final String RATING_KEY = "Rating";
 
     protected void onCreate( Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country);
         Intent i = getIntent();
         int index = i.getIntExtra(MainActivity.EXTRA_COUNTRY_INDEX, 0);
-        CountryStorage cs = CountryStorage.getCountryStorage();
+        final CountryStorage cs = CountryStorage.getCountryStorage();
         currentCountry = cs.getCountry(index);
         makeTask(currentCountry.getName()).execute();
 
@@ -86,9 +88,24 @@ public class CountryActivity extends AppCompatActivity {
 
         //TODO: add to ocuntry list
         Button yesButton = (Button) findViewById(R.id.btnYes);
-
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                cs.addBasedOnCountry(currentCountry);
+            }
+        });
         //TODO: remove countries from list
         Button noButton = (Button) findViewById(R.id.btnNo);
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cs.removeCountriesBasedOnCountry(currentCountry);
+            }
+        });
+        
+        //sharedpreferences?
+        //// TODO: 3/11/2017 make text box text persistent
+
+        //TODO: make rating bar persistent
 
 
     }

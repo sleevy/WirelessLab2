@@ -56,6 +56,7 @@ public class MainActivity extends FragmentActivity {
 
         countryRecycler.setAdapter(adapter);
 
+        //todo change to card layout if few in list
 
     }
 
