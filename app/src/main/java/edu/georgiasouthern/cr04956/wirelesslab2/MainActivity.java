@@ -1,10 +1,8 @@
 package edu.georgiasouthern.cr04956.wirelesslab2;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -16,12 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import static android.R.attr.country;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     public static final String EXTRA_COUNTRY_INDEX = "edu.georgiasouthern.cr04956.MainActivity.index";
@@ -37,7 +32,7 @@ public class MainActivity extends FragmentActivity {
 
         CountryAdapter adapter = new CountryAdapter();
 
-        cs.setObserver(adapter);
+//        cs.setObserver(adapter);
 
         Button reset = (Button) findViewById(R.id.btnReset);
         reset.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +40,7 @@ public class MainActivity extends FragmentActivity {
             public void onClick(View v) {
                 Log.i("Reset onClick", "Resetting country list");
                 cs.resetCountryList();
+                countryRecycler.getAdapter().notifyDataSetChanged();
             }
         });
 
@@ -92,7 +88,7 @@ public class MainActivity extends FragmentActivity {
             Country country = cs.getCountry(position);
             holder.flagImage.setImageResource(country.getFlagId());
             holder.countryName.setText(country.getName());
-
+            holder.continentName.setText(country.getContinent().getContinentName());
         }
 
     }
@@ -106,17 +102,23 @@ public class MainActivity extends FragmentActivity {
             Log.i("onClick", name);
             Intent toCountryActivity = new Intent(MainActivity.this, CountryActivity.class);
             toCountryActivity.putExtra(EXTRA_COUNTRY_INDEX, pos);
-            startActivity(toCountryActivity);
+            startActivityForResult(toCountryActivity, 1);
         }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        countryRecycler.getAdapter().notifyDataSetChanged();
     }
 
     private class CountryHolder extends RecyclerView.ViewHolder {
             public ImageView flagImage;
             public TextView countryName;
+            public TextView continentName;
         public CountryHolder(View itemView) {
             super(itemView);
             flagImage = (ImageView) itemView.findViewById(R.id.itemCountryFlag);
             countryName = (TextView) itemView.findViewById(R.id.itemCountryName);
+            continentName = (TextView) itemView.findViewById(R.id.txtContinent);
         }
 
 

@@ -16,22 +16,39 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="@string/text_country"
-            android:textAlignment="textStart"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/text_country"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemCountryName"
+                android:layout_width="180dp"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:text="@string/item_name_default"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/itemCountryName"
+            android:id="@+id/txtContinent"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="@string/item_name_default"
-            android:textAlignment="center"
-            android:textSize="30sp" />
+            android:gravity="center_vertical"
+            android:text="Continent Placeholder"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 

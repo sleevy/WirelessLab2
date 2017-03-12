@@ -34,6 +34,19 @@ public class Country {
     }
 
     public enum Continent {
-        AFRICA, ASIA, NORTH_AMERICA, SOUTH_AMERICA, EUROPE;
+        AFRICA ("Africa"),
+        ASIA ("Asia"),
+        NORTH_AMERICA ("North America"),
+        SOUTH_AMERICA ("South America"),
+        EUROPE ("Europe");
+
+        private String continent;
+        Continent(String cont) {
+            continent = cont;
+        }
+
+        public String getContinentName() {
+            return continent;
+        }
     }
 }
